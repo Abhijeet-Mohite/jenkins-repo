@@ -3,12 +3,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/Abhijeet-Mohite/jenkins-repo.git'
-            }
-        }
-
         stage('Deploy') {
             steps {
                 sh '''
