@@ -1,5 +1,3 @@
-
-
 pipeline {
     agent any
 
@@ -14,10 +12,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                  rm -rf /var/www/html/*
-                  cp -r * /var/www/html/
- 
-                  systemctl restart apache2
+                sudo rm -rf /var/www/html/*
+                sudo cp -r * /var/www/html/
+                sudo systemctl restart apache2
                 '''
             }
         }
@@ -25,11 +22,10 @@ pipeline {
 
     post {
         success {
-              "Deployment Successful 🚀"
+            echo "Deployment Successful 🚀"
         }
         failure {
-              "Deployment Failed ❌"
+            echo "Deployment Failed ❌"
         }
     }
 }
- 
